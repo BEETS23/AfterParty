@@ -9,10 +9,24 @@ public class PlayerMovement : MonoBehaviour
     Vector2 lastMousePos;
     bool isMoving = false;
     GameObject selectedObject; // Almacena la referencia al objeto seleccionado actualmente.
+    public GameObject canvas;
+    private bool canMove = true;
 
     // Update is called once per frame
     void Update()
     {
+
+        if (canvas.activeSelf)
+        {
+            canMove = false; // Deshabilita el movimiento mientras el canvas está activo
+            return;
+        }
+
+        if (!canMove) 
+        {
+            return; // Si no puede moverse, no ejecutar el resto del código de Update
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             lastMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -62,4 +76,22 @@ public class PlayerMovement : MonoBehaviour
         }
         selectedObject = null; // Limpia la referencia al objeto seleccionado.
     }
+
+    public void EnableMovementAfterDelay(float delay)
+    {
+        StartCoroutine(EnableMovementDelay(delay));
+    }
+
+    private IEnumerator EnableMovementDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        canMove = true;
+    }
+
+    public void ResetMovement()
+    {
+        isMoving = false; // Detiene el movimiento
+        lastMousePos = transform.position; // Resetea la última posición de mouse
+    }
+
 }
