@@ -16,14 +16,12 @@ public class PanelController : MonoBehaviour
         {
             Debug.LogError("No se encontró un componente UIDocument en este GameObject.");
         }
-        panelUI.enabled = false;
     }
 
     public void CreateAndShowPanel()
     {
         if (panelUI == null) return;
-        panelUI.enabled = true;
-        
+
         // Carga el archivo UXML 'PanelLayout' desde la carpeta Resources
         var visualTree = Resources.Load<VisualTreeAsset>("PanelLayout");
         rootElement = visualTree.CloneTree();
@@ -46,7 +44,6 @@ public class PanelController : MonoBehaviour
     {
         // Elimina el panel y limpia los recursos
         panelUI.rootVisualElement.Remove(rootElement);
-        panelUI.enabled = true;
         rootElement = null;
         panel = null;
         closeButton = null;
