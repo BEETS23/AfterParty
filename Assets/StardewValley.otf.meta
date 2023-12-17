@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 4d6e73fd6b3ff8c4bbacf41e8341b739
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - StardewValley
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: e1492e2642bb191489796909c67a7c46, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
