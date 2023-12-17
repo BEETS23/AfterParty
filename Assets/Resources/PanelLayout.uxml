@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.31); align-self: center; align-items: center; justify-content: center;">
+        <ui:VisualElement name="Panel" style="flex-grow: 1; background-color: rgba(255, 255, 255, 0.99); height: 862px; width: 1589px; position: absolute; top: 124px; left: -794px;">
+            <ui:Button text="X" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CloseButton" style="position: absolute; top: 15px; left: 1492px; color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-outline-color: rgb(255, 255, 255); background-color: rgb(255, 0, 0); height: 44px; width: 67px; font-size: 20px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

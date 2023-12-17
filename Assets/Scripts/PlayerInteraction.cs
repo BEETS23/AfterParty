@@ -4,15 +4,19 @@ using System.Collections.Generic;
 public class PlayerInteraction : MonoBehaviour
 {
     public float interactionDistance = 2.0f;
-    // public PanelController panelController; // Referencia al PanelController
+
+    public GameObject closeupCanvas; // Referencia al canvas Closeup_01
 
     private List<GameObject> clickableObjects = new List<GameObject>();
+    public PlayerMovement playerMovementScript; // Referencia al script PlayerMovement
+
 
     void Start()
     {
         GameObject[] clickable = GameObject.FindGameObjectsWithTag("Clickable");
         clickableObjects.AddRange(clickable);
-        Debug.Log(clickableObjects.Count);
+        closeupCanvas.SetActive(false); // Asegúrate de que el canvas esté oculto al inicio
+
     }
 
     void Update()
@@ -32,11 +36,23 @@ public class PlayerInteraction : MonoBehaviour
                     float clickedDistance = Mathf.Abs(transform.position.x - clickedObject.transform.position.x);
                     if (clickedDistance <= interactionDistance)
                     {
+                        clickableObj.GetComponent<ObjectInteraction>().SelectObject();
                         clickableObj.GetComponent<DialogueTrigger>().TriggerDialogue();
+                        // closeupCanvas.SetActive(true); // Muestra el canvas
                     }
+                    
                 }
-                // panelController.CreateAndShowPanel(); // Usa PanelController para mostrar el panel
             }
         }
     }
+
+    // En el método que cierra el canvas
+    public void CloseCanvas()
+    {
+        closeupCanvas.SetActive(false);
+        playerMovementScript.EnableMovementAfterDelay(0.5f); // 0.5 segundos de retraso
+        playerMovementScript.ResetMovement();
+    }
+
 }
+
