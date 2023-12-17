@@ -1,0 +1,1 @@
+﻿VAR pokemon_name = ""
