@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionDistance: 2
   closeupCanvas: {fileID: 198798426}
-  playerMovementScript: {fileID: 0}
+  playerMovementScript: {fileID: 156377566}
 --- !u!4 &33070687
 Transform:
   m_ObjectHideFlags: 0
@@ -297,8 +297,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156377564}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.0715165, y: -0.12630165, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.2201, y: -0.4964, z: 0.1}
+  m_LocalScale: {x: 0.5798, y: 0.5636, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayImage: {fileID: 1318400663}
-  canvas: {fileID: 1157622639}
+  canvas: {fileID: 198798426}
 --- !u!1 &303792158
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,7 +728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FollowSpeed: 2
-  target: {fileID: 0}
+  target: {fileID: 156377569}
 --- !u!1001 &805051326
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -740,6 +740,10 @@ PrefabInstance:
       propertyPath: imageToShow
       value: 
       objectReference: {fileID: 21300000, guid: 2a4d9c404f772404bb97e85d7f0a7d3f, type: 3}
+    - target: {fileID: 1981692215574970220, guid: 610ba30d7d4a47940956aa56ab56ca46, type: 3}
+      propertyPath: canvasController
+      value: 
+      objectReference: {fileID: 198798431}
     - target: {fileID: 3705997713812505464, guid: 610ba30d7d4a47940956aa56ab56ca46, type: 3}
       propertyPath: m_Name
       value: Object_Drawer
@@ -943,6 +947,10 @@ PrefabInstance:
       propertyPath: imageToShow
       value: 
       objectReference: {fileID: 21300000, guid: b9291cde5b246d845b9872152887e4c2, type: 3}
+    - target: {fileID: 1981692215574970220, guid: 610ba30d7d4a47940956aa56ab56ca46, type: 3}
+      propertyPath: canvasController
+      value: 
+      objectReference: {fileID: 198798431}
     - target: {fileID: 3705997713812505464, guid: 610ba30d7d4a47940956aa56ab56ca46, type: 3}
       propertyPath: m_Name
       value: Object_Computer
@@ -1079,6 +1087,10 @@ PrefabInstance:
       propertyPath: imageToShow
       value: 
       objectReference: {fileID: 21300000, guid: b27394897c6bc3042bdb9a870f27f062, type: 3}
+    - target: {fileID: 1981692215574970220, guid: 610ba30d7d4a47940956aa56ab56ca46, type: 3}
+      propertyPath: canvasController
+      value: 
+      objectReference: {fileID: 198798431}
     - target: {fileID: 3705997713812505464, guid: 610ba30d7d4a47940956aa56ab56ca46, type: 3}
       propertyPath: m_Name
       value: Object_Bass

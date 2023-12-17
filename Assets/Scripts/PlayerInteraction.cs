@@ -35,7 +35,8 @@ public class PlayerInteraction : MonoBehaviour
                     if (clickedDistance <= interactionDistance)
                     {
                         clickableObj.GetComponent<ObjectInteraction>().SelectObject();
-                        closeupCanvas.SetActive(true); // Muestra el canvas
+                        clickableObj.GetComponent<DialogueTrigger>().TriggerDialogue();
+                        // closeupCanvas.SetActive(true); // Muestra el canvas
                     }
                     
                 }
