@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class PlayerInteraction : MonoBehaviour
 {
     public float interactionDistance = 2.0f;
+
     public GameObject closeupCanvas; // Referencia al canvas Closeup_01
 
     private List<GameObject> clickableObjects = new List<GameObject>();
@@ -15,6 +16,7 @@ public class PlayerInteraction : MonoBehaviour
         GameObject[] clickable = GameObject.FindGameObjectsWithTag("Clickable");
         clickableObjects.AddRange(clickable);
         closeupCanvas.SetActive(false); // Asegúrate de que el canvas esté oculto al inicio
+
     }
 
     void Update()
@@ -53,3 +55,4 @@ public class PlayerInteraction : MonoBehaviour
     }
 
 }
+

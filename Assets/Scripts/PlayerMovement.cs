@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private bool canMove = true;
     Animator animator;
 
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -114,7 +115,6 @@ public class PlayerMovement : MonoBehaviour
     {
         StartCoroutine(EnableMovementDelay(delay));
     }
-
     private IEnumerator EnableMovementDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -127,5 +127,6 @@ public class PlayerMovement : MonoBehaviour
         lastMousePos = transform.position; // Resetea la última posición de mouse
         animator.Play("P_Idle");
     }
+
 
 }
