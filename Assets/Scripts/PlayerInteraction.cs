@@ -32,6 +32,7 @@ public class PlayerInteraction : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit))
                 {
+                    Debug.Log(clickableObj.name);  
                     GameObject clickedObject = hit.collider.gameObject;
                     float clickedDistance = Mathf.Abs(transform.position.x - clickedObject.transform.position.x);
                     if (clickedDistance <= interactionDistance)

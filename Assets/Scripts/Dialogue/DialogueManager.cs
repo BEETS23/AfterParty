@@ -25,6 +25,8 @@ public class DialogueManager : MonoBehaviour
 
     private DialogueVariables dialogueVariables;
 
+    public GameObject DialogueChoicesPanel;
+
     private void Awake()
     {
         if (instance != null)
@@ -68,6 +70,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EnterDialogueMode(TextAsset inkJSON)
     {
+        Debug.Log("Entering dialogue mode");
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
@@ -101,6 +104,13 @@ public class DialogueManager : MonoBehaviour
     public void DisplayChoices()
     {
         List<Choice> currentChoices = currentStory.currentChoices;
+
+        if (currentChoices.Count == 0)
+        {
+            DialogueChoicesPanel.SetActive(false);
+            return;
+        }
+        DialogueChoicesPanel.SetActive(true);
 
         if (currentChoices.Count > choices.Length)
         {

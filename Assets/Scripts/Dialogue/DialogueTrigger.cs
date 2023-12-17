@@ -9,6 +9,7 @@ public class DialogueTrigger : MonoBehaviour
 
     public void TriggerDialogue()
     {
+        Debug.Log("Triggering dialogue");
         FindObjectOfType<DialogueManager>().EnterDialogueMode(inkJSON);
     }
 }
