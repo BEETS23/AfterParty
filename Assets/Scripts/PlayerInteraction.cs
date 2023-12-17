@@ -21,7 +21,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         foreach (GameObject clickableObj in clickableObjects)
         {
-            float distance = Vector2.Distance(transform.position, clickableObj.transform.position);
+            float distance = Mathf.Abs(transform.position.x - clickableObj.transform.position.x);
 
             if (distance <= interactionDistance && Input.GetMouseButtonDown(0))
             {
@@ -30,8 +30,13 @@ public class PlayerInteraction : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit))
                 {
-                    clickableObj.GetComponent<ObjectInteraction>().ChangeColor();
-                    closeupCanvas.SetActive(true); // Muestra el canvas
+                    GameObject clickedObject = hit.collider.gameObject;
+                    float clickedDistance = Mathf.Abs(transform.position.x - clickedObject.transform.position.x);
+                    if (clickedDistance <= interactionDistance)
+                    {
+                        clickableObj.GetComponent<ObjectInteraction>().SelectObject();
+                        closeupCanvas.SetActive(true); // Muestra el canvas
+                    }
                     
                 }
             }

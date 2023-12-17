@@ -8,10 +8,19 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 lastMousePos;
     bool isMoving = false;
-    GameObject selectedObject; // Almacena la referencia al objeto seleccionado actualmente.
+    public GameObject selectedObject; // Almacena la referencia al objeto seleccionado actualmente.
     public GameObject canvas;
     private bool canMove = true;
+    Animator animator;
 
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+        if (canvas != null)
+        {
+            canvas.SetActive(false); // Asegúrate de que el canvas esté oculto al inicio
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -31,16 +40,40 @@ public class PlayerMovement : MonoBehaviour
         {
             lastMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             isMoving = true;
+            animator.Play("P_Walk");
 
             // Llama a la función para deseleccionar el objeto anterior.
             DeselectObject();
         }
 
-        if (isMoving && (Vector2)transform.position != lastMousePos)
+        if (isMoving && transform.position.x != lastMousePos.x)
         {
             Vector3 newPos = transform.position;
             newPos.x = Mathf.MoveTowards(transform.position.x, lastMousePos.x, speed * Time.deltaTime);
             transform.position = newPos;
+        }
+
+        if (isMoving)
+        {
+            Vector3 newPos = transform.position;
+            newPos.x = Mathf.MoveTowards(transform.position.x, lastMousePos.x, speed * Time.deltaTime);
+            transform.position = newPos;
+
+            if (lastMousePos.x < transform.position.x) // Movimiento hacia la izquierda
+            {
+                transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            }
+            else if (lastMousePos.x > transform.position.x) // Movimiento hacia la derecha
+            {
+                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            }
+
+            // Comprueba si el jugador ha llegado a la posición de destino
+            if (Mathf.Abs(transform.position.x - lastMousePos.x) < 0.1f) // 0.1f es un umbral para la precisión
+            {
+                isMoving = false;
+                animator.Play("P_Idle"); // Cambia a la animación idle
+            }
         }
 
         // Verifica si el jugador hizo clic en algo más.
@@ -92,6 +125,7 @@ public class PlayerMovement : MonoBehaviour
     {
         isMoving = false; // Detiene el movimiento
         lastMousePos = transform.position; // Resetea la última posición de mouse
+        animator.Play("P_Idle");
     }
 
 }

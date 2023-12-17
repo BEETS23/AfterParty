@@ -7,16 +7,23 @@ public class ObjectInteraction : MonoBehaviour
 
     private Material originalMaterial; // Material original del objeto.
     private bool isSelected = false; // Indica si el objeto está seleccionado.
+    public Sprite imageToShow; // La imagen específica para este objeto
+    private CanvasController canvasController; // Referencia al controlador del canvas
+
 
     void Start()
     {
         originalMaterial = GetComponent<Renderer>().material;
+        canvasController = FindObjectOfType<CanvasController>(); // Encuentra el controlador del canvas en la escena
     }
 
-    public void ChangeColor()
+    public void SelectObject() 
     {
-        GetComponent<Renderer>().material = newMaterial;
-        isSelected = true; // Marca el objeto como seleccionado.
+        if (canvasController != null)
+        {
+            isSelected = true; // Marca el objeto como seleccionado.
+            canvasController.ShowImage(imageToShow); // Muestra la imagen en el canvas
+        }
     }
 
     public void ResetColor()
